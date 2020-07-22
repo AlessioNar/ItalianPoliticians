@@ -11,11 +11,10 @@ prep_ita <- function (textdata, groupvar, textvar, node_type = c("groups","words
         textdata[[textvar]] <- iconv(textdata[[textvar]], from = "", to = "UTF-8", sub = "")
         }
 
-    if (tokenizer == "tweets"){
-        if (!is.null(remove_numbers) && isTRUE(remove_numbers)) {
+
+    if (!is.null(remove_numbers) && isTRUE(remove_numbers)) {
                   textdata[[textvar]] <- gsub("\\b\\d+\\b", "", textdata[[textvar]])
                                                                 }
-                              }
 
     ita_model <- "C:/Users/aless/Desktop/R/Models/italian-isdt-ud-2.4-190531.udpipe"
     udmodel_lang <- udpipe::udpipe_load_model(file = ita_model)
